@@ -14,6 +14,8 @@ export default (state = { value: '' }, action) => {
   switch (action.type) {
     case 'SEARCH_BOX_CHANGE':
       return { ...state, value: action.value };
+    case 'SEARCH_SUBMIT':
+      return { ...state, loading: true };
     case 'SEARCH_RESULT_DATA': {
       const { data } = action.response;
       const displayName = data.response.geocode.displayString;
@@ -21,6 +23,7 @@ export default (state = { value: '' }, action) => {
 
       return {
         ...state,
+        loading: false,
         results: {
           displayName,
           venues

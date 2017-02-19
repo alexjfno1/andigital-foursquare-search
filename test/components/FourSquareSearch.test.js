@@ -21,6 +21,17 @@ describe('/src/react/components/FourSquareSearch', () => {
     expect(searchBox.prop('handleSearchBoxChange')).to.equal(handleSearchBoxChange);
   });
 
+  it('renders a loading element when fetching results', () => {
+    const wrapper = shallow(<FourSquareSearch
+      search={{ loading: true }}
+    />);
+    const loading = wrapper.find('.FourSquareSearch__loading');
+    const searchResults = wrapper.find(SearchResults);
+
+    expect(loading).length.to.be(1);
+    expect(searchResults).length.to.be(0);
+  });
+
   it('renders the SearchResults with correct props', () => {
     const results = [{ name: 'Blah' }];
     const wrapper = shallow(<FourSquareSearch

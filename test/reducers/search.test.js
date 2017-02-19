@@ -27,12 +27,22 @@ describe('src/react/reducers/Search', () => {
     });
   });
 
+  describe('SEARCH_SUBMIT', () => {
+    it('returns loading as true', () => {
+      const action = { type: 'SEARCH_SUBMIT' };
+      const state = searchReducer({}, action);
+
+      expect(state).to.deep.equal({ loading: true });
+    });
+  });
+
   describe('SEARCH_RESULT_DATA', () => {
     it('returns the found search results', () => {
       const action = { type: 'SEARCH_RESULT_DATA', response: { data: response } };
       const state = searchReducer({ value: 'Tonbridge' }, action);
 
       expect(state).to.deep.equal({
+        loading: false,
         value: 'Tonbridge',
         results: {
           displayName: 'Tonbridge, Kent, United Kingdom',
@@ -44,6 +54,13 @@ describe('src/react/reducers/Search', () => {
           }]
         }
       });
+    });
+
+    it('returns loading as false', () => {
+      const action = { type: 'SEARCH_RESULT_DATA', response: { data: response } };
+      const state = searchReducer({ loading: true }, action);
+
+      expect(state.loading).to.equal(false);
     });
   });
 });
