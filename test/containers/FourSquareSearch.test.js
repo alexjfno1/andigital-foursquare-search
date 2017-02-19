@@ -7,7 +7,9 @@ const setup = (sandbox) => {
   const store = {
     subscribe: sandbox.spy(),
     dispatch: sandbox.spy(),
-    getState: () => ({})
+    getState: () => ({
+      search: {}
+    })
   };
   const wrapper = mount(
     <Provider store={store}>

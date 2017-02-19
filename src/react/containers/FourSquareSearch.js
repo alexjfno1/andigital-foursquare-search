@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import FourSquareSearch from '../components/FourSquareSearch';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  search: state.search
+});
 
 const mapDispatchToProps = dispatch => ({
   handleSearchBoxChange: (value) => {

@@ -1,5 +1,12 @@
 import React from 'react';
+import SearchBox from './SearchBox';
 
-export default () => (
-  <h1>Hello, World!</h1>
+export default ({ search, handleSearchBoxChange, handleSearchSubmit }) => (
+  <div className="FourSquareSearch">
+    <SearchBox
+      searchValue={search.value}
+      handleSearchBoxChange={handleSearchBoxChange}
+      handleSearchSubmit={handleSearchSubmit}
+    />
+  </div>
 );

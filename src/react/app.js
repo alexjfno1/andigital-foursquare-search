@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import Main from './containers/Main';
+import FourSquareSearch from './containers/FourSquareSearch';
 
 import './styles/app.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main />
+    <FourSquareSearch />
   </Provider>,
   document.getElementById('app')
 );
