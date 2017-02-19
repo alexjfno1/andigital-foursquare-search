@@ -1,4 +1,5 @@
 import searchReducer from '../../src/react/reducers/Search';
+import { response } from '../../fixtures/searchResult';
 
 describe('src/react/reducers/Search', () => {
   it('returns default state', () => {
@@ -23,6 +24,25 @@ describe('src/react/reducers/Search', () => {
       const state = searchReducer({}, action);
 
       expect(state).to.deep.equal({ value: searchValue });
+    });
+  });
+
+  describe('SEARCH_RESULT_DATA', () => {
+    it('returns the found search results', () => {
+      const action = { type: 'SEARCH_RESULT_DATA', response: { data: response } };
+      const state = searchReducer({ value: 'Tonbridge' }, action);
+
+      expect(state).to.deep.equal({
+        value: 'Tonbridge',
+        results: {
+          displayName: 'Tonbridge, Kent, United Kingdom',
+          venues: [{
+            name: 'Penshurst Place',
+            address: 'Penshurst, Tonbridge, Kent, TN11 8DG, United Kingdom',
+            rating: 8.7
+          }]
+        }
+      });
     });
   });
 });
