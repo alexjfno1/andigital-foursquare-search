@@ -1,7 +1,10 @@
 import { compose, createStore, applyMiddleware } from 'redux';
+import searchMiddleware from '../middleware/Search';
 import reducers from '../reducers';
 
-const middleware = [];
+const middleware = [
+  searchMiddleware
+];
 
 const enhancers = [
   applyMiddleware(...middleware)
