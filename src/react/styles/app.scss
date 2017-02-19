@@ -1,3 +1,98 @@
-body {
-  font-family: Helvetica
+$dark-blue: #2C3E50;
+$white: #ECF0F1;
+$red: #E74C3C;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: Helvetica;
+  background-color: $dark-blue;
+  padding: 0;
+  margin: 0;
+  color: $white;
+}
+
+.FourSquareSearch {
+  max-width: 700px;
+  margin: 0 auto;
+
+  h1, p {
+    margin: 10px 30px;
+  }
+}
+
+.FourSquareSearch h1 {
+}
+
+.FourSquareSearch__loading {
+  margin: 0 30px;
+  font-size: 18px;
+}
+
+.FourSquareSearch__error {
+  margin: 0 30px;
+  background-color: $red;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.SearchBox form {
+  display: flex;
+  margin: 30px;
+  justify-content: space-between;
+}
+
+.SearchBox__input {
+  background-color: $white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  color: $dark-blue;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.SearchBox__button {
+  background-color: $white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  color: $dark-blue;
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.SearchResults {
+  margin: 0 30px;
+}
+
+.SearchResults__displayName {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.SearchResult {
+  background-color: $white;
+  color: $dark-blue;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.SearchResult__row {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.SearchResult__name, .SearchResult__address, .SearchResult__rating {
+  @extend .SearchResult__row;
+}
+
+.SearchResult__title {
+  font-weight: bold;
+  margin-right: 5px;
 }

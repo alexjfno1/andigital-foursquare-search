@@ -4,6 +4,8 @@ import SearchResults from './SearchResults';
 
 export default ({ search, handleSearchBoxChange, handleSearchSubmit, loading }) => (
   <div className="FourSquareSearch">
+    <h1>Foursquare Search</h1>
+    <p>Search for recommended and popular places</p>
     <SearchBox
       searchValue={search.value}
       handleSearchBoxChange={handleSearchBoxChange}
