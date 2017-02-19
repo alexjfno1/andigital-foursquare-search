@@ -1,11 +1,12 @@
 const reduceVenues = (data) => {
   const recommendedPlaces = data.response.groups.find(group => group.name === 'recommended');
   return recommendedPlaces.items.map((place) => {
+    const id = place.venue.id;
     const name = place.venue.name;
     const address = place.venue.location.formattedAddress.join(', ');
     const rating = place.venue.rating;
 
-    return { name, address, rating };
+    return { id, name, address, rating };
   });
 };
 

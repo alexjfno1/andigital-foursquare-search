@@ -37,6 +37,7 @@ describe('src/react/reducers/Search', () => {
         results: {
           displayName: 'Tonbridge, Kent, United Kingdom',
           venues: [{
+            id: '4b9baba8f964a5209f1836e3',
             name: 'Penshurst Place',
             address: 'Penshurst, Tonbridge, Kent, TN11 8DG, United Kingdom',
             rating: 8.7

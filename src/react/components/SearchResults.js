@@ -3,6 +3,6 @@ import SearchResult from './SearchResult';
 
 export default ({ results }) => (
   <div className="SearchResults">
-    { results.venues.map(result => <SearchResult key={result.name} result={result} />) }
+    { results.venues.map(result => <SearchResult key={result.id} result={result} />) }
   </div>
 );
