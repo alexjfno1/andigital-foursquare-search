@@ -3,6 +3,13 @@ import SearchResults from '../../src/react/components/SearchResults';
 import SearchResult from '../../src/react/components/SearchResult';
 
 describe('src/react/components/SearchResults', () => {
+  it('renders the displayName', () => {
+    const results = { displayName: 'DisplayName', venues: [] };
+    const wrapper = shallow(<SearchResults results={results} />);
+
+    expect(wrapper.find('.SearchResults__displayName').text()).to.include('DisplayName');
+  });
+
   it('renders a list of SearchResult components', () => {
     const results = { venues: [{ name: 'Venue 1' }, { name: 'Venue 2' }] };
     const wrapper = shallow(<SearchResults results={results} />);
