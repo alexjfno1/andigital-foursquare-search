@@ -15,7 +15,7 @@ export default (state = { value: '' }, action) => {
     case 'SEARCH_BOX_CHANGE':
       return { ...state, value: action.value };
     case 'SEARCH_SUBMIT':
-      return { ...state, loading: true };
+      return { ...state, error: false, loading: true };
     case 'SEARCH_RESULT_DATA': {
       const { data } = action.response;
       const displayName = data.response.geocode.displayString;
@@ -23,6 +23,7 @@ export default (state = { value: '' }, action) => {
 
       return {
         ...state,
+        error: false,
         loading: false,
         results: {
           displayName,
@@ -30,6 +31,8 @@ export default (state = { value: '' }, action) => {
         }
       };
     }
+    case 'SEARCH_RESULT_FAILURE':
+      return { loading: false, error: true };
     default:
       return state;
   }

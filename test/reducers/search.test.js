@@ -32,7 +32,10 @@ describe('src/react/reducers/Search', () => {
       const action = { type: 'SEARCH_SUBMIT' };
       const state = searchReducer({}, action);
 
-      expect(state).to.deep.equal({ loading: true });
+      expect(state).to.deep.equal({
+        loading: true,
+        error: false
+      });
     });
   });
 
@@ -42,6 +45,7 @@ describe('src/react/reducers/Search', () => {
       const state = searchReducer({ value: 'Tonbridge' }, action);
 
       expect(state).to.deep.equal({
+        error: false,
         loading: false,
         value: 'Tonbridge',
         results: {
@@ -61,6 +65,25 @@ describe('src/react/reducers/Search', () => {
       const state = searchReducer({ loading: true }, action);
 
       expect(state.loading).to.equal(false);
+    });
+
+    it('returns error as false', () => {
+      const action = { type: 'SEARCH_RESULT_DATA', response: { data: response } };
+      const state = searchReducer({ error: true }, action);
+
+      expect(state.error).to.equal(false);
+    });
+  });
+
+  describe('SEARCH_RESULT_FAILURE', () => {
+    it('returns error as true', () => {
+      const action = { type: 'SEARCH_RESULT_FAILURE' };
+      const state = searchReducer({ loading: true }, action);
+
+      expect(state).to.deep.equal({
+        loading: false,
+        error: true
+      });
     });
   });
 });

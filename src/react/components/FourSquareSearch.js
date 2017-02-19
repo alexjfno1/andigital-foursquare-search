@@ -9,7 +9,8 @@ export default ({ search, handleSearchBoxChange, handleSearchSubmit, loading }) 
       handleSearchBoxChange={handleSearchBoxChange}
       handleSearchSubmit={handleSearchSubmit}
     />
-    { search.loading ? <div className="FourSquareSearch__loading">Loading...</div> : null }
-    { search.results && !search.loading ? <SearchResults results={search.results} /> : null }
+    { search.error ? <div className="FourSquareSearch__error">An error occured. Try again.</div> : null }
+    { !search.error && search.loading ? <div className="FourSquareSearch__loading">Loading...</div> : null }
+    { !search.error && search.results && !search.loading ? <SearchResults results={search.results} /> : null }
   </div>
 );

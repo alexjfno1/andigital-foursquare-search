@@ -20,12 +20,25 @@ describe('src/react/fetchers/Search', () => {
       const dispatchSpy = this.spy();
       const axiosMock = this.mock(axios);
       const response = { data: 'Response Data' };
-      axiosMock.expects('get').returns(response);
+      axiosMock.expects('get').returns(new Promise(resolve => resolve(response)));
 
       return fetchSearchResults(searchValue, dispatchSpy).then(() => {
         expect(dispatchSpy).to.have.been.calledWith({
           type: 'SEARCH_RESULT_DATA',
           response
+        });
+      });
+    }));
+
+    it('dispatches SEARCH_RESULT_FAILURE action when the api fails', sinon.test(function () {
+      const searchValue = 'A town';
+      const dispatchSpy = this.spy();
+      const axiosMock = this.mock(axios);
+      axiosMock.expects('get').returns(new Promise((resolve, reject) => reject(new Error('Boom!'))));
+
+      return fetchSearchResults(searchValue, dispatchSpy).then(() => {
+        expect(dispatchSpy).to.have.been.calledWith({
+          type: 'SEARCH_RESULT_FAILURE'
         });
       });
     }));

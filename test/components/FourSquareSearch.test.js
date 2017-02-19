@@ -32,6 +32,19 @@ describe('/src/react/components/FourSquareSearch', () => {
     expect(searchResults).length.to.be(0);
   });
 
+  it('renders an error element when fetching results fails', () => {
+    const wrapper = shallow(<FourSquareSearch
+      search={{ error: true }}
+    />);
+    const error = wrapper.find('.FourSquareSearch__error');
+    const loading = wrapper.find('.FourSquareSearch__loading');
+    const searchResults = wrapper.find(SearchResults);
+
+    expect(error).length.to.be(1);
+    expect(loading).length.to.be(0);
+    expect(searchResults).length.to.be(0);
+  });
+
   it('renders the SearchResults with correct props', () => {
     const results = [{ name: 'Blah' }];
     const wrapper = shallow(<FourSquareSearch
