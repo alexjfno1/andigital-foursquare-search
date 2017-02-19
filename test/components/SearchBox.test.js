@@ -43,11 +43,13 @@ describe('/src/react/components/SearchBox', () => {
 
   it('calls handleSearchSubmit on form submit', sinon.test(function () {
     const handleSearchSubmitSpy = sinon.spy();
+    const preventDefaultSpy = sinon.spy();
     const wrapper = shallow(<SearchBox handleSearchSubmit={handleSearchSubmitSpy} />);
     const form = wrapper.find('form');
 
-    form.simulate('submit');
+    form.simulate('submit', { preventDefault: preventDefaultSpy });
 
+    expect(preventDefaultSpy).to.have.been.calledOnce;
     expect(handleSearchSubmitSpy).to.have.been.calledOnce;
   }));
 });
