@@ -6,7 +6,7 @@ console.log('******************** Building for ENV:', process.env.NODE_ENV, '***
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: './src/react/app',
+  entry: ['babel-polyfill', './src/react/app'],
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
